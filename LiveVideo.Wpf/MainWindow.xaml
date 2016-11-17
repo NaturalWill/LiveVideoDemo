@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:domain1="clr-namespace:MaterialDesignDemo.Domain"
         xmlns:materialDesignDemo="clr-namespace:MaterialDesignDemo"
-        Title="Material Design in XAML" Height="800" Width="1100"
+        Title="Material Design in XAML" Height="700" Width="1000"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -21,6 +21,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="Themes/LiveDictionary.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
             <!-- data template used for the dialogs example, defines a View for a ViewModel of type DateTime  -->
@@ -197,25 +199,154 @@
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
             <DockPanel>
-                <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                            Mode="PrimaryMid" DockPanel.Dock="Top">
+                <DockPanel DockPanel.Dock="Right" MinWidth="256" Background="Black">
+
+                    <materialDesign:ColorZone Padding="16" Height="70" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="Dark" DockPanel.Dock="Top">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Calendar" VerticalAlignment="Center"  Foreground="#FFD49335" HorizontalAlignment="Center" Height="22" Width="22"></materialDesign:PackIcon>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFD49335">场景设定</TextBlock>
+                    </StackPanel></materialDesign:ColorZone>
+                    <TabControl x:Name="tabControl" Padding="0">
+                        <TabItem  Width="128" Height="32" Padding="0">
+                            <TabItem.Header>
+                                <DockPanel Background="Gray" Width="128" Height="32" >
+                                    
+                                    <TextBlock  Text="场景1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </DockPanel>
+                            </TabItem.Header>
+                            <Grid Background="Gray"/>
+                        </TabItem>
+                        <TabItem  Width="128"  Height="32" Padding="0">
+                            <TabItem.Header>
+                                <Grid Background="Gray"  Width="128" Height="32">
+                                    <TextBlock  Text="场景2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                            </TabItem.Header>
+                            <Grid Background="Gray"/>
+                        </TabItem>
+                    </TabControl>
+
+                </DockPanel>
+                <materialDesign:ColorZone Padding="16" Height="70" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="Dark" DockPanel.Dock="Top">
                     <DockPanel>
                         <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
                                         x:Name="MenuToggleButton"/>
-                        <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
-                            <StackPanel>
-                                <Button Content="Hello World" Click="MenuPopupButton_OnClick"/>
-                                <Button Content="Nice Popup" Click="MenuPopupButton_OnClick"/>
-                                <Button Content="Can't Touch This" IsEnabled="False" />
-                                <Separator/>
-                                <Button Content="Goodbye" Click="MenuPopupButton_OnClick"/>                                
-                            </StackPanel>
-                        </materialDesign:PopupBox>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Material Design In XAML Toolkit</TextBlock>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" >
+
+                            <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                                <StackPanel>
+                                    <Button Content="Hello World" Click="MenuPopupButton_OnClick"/>
+                                    <Button Content="Nice Popup" Click="MenuPopupButton_OnClick"/>
+                                    <Button Content="Can't Touch This" IsEnabled="False" />
+                                    <Separator/>
+                                    <Button Content="Goodbye" Click="MenuPopupButton_OnClick"/>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+
+                            <Button Style="{StaticResource   MaterialDesignToolForegroundButton}"  >
+                                <materialDesign:PackIcon Kind="WindowMinimize" />
+
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignToolForegroundButton}"  >
+                                <materialDesign:PackIcon Kind="WindowClose" />
+
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" >
+
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" Width="100"
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Background="#FFD49335">
+                                直播
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" Width="100"
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Background="#FFD49335">
+                                录制
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 8 0" Width="100"
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Background="#FFD49335">
+                                设置
+                            </Button>
+                        </StackPanel>
                     </DockPanel>
                 </materialDesign:ColorZone>
-                <Grid>
-                    <ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />
+                <materialDesign:ColorZone  Padding="8"  materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="Dark" DockPanel.Dock="Bottom">
+                    <DockPanel>
+                        <StackPanel  Orientation="Horizontal" DockPanel.Dock="Left">
+                            <Button Height="70"  Style="{StaticResource MaterialDesignFlatBottomButton}"  >
+                                <StackPanel >
+                                    <materialDesign:PackIcon Kind="Monitor" Height="40" Width="40" HorizontalAlignment="Center" />
+                                    <Label  Content="全屏录制" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Height="70" Style="{StaticResource MaterialDesignFlatBottomButton}"  >
+                                <StackPanel >
+                                    <materialDesign:PackIcon Kind="Camera" Height="40" Width="40" HorizontalAlignment="Center" />
+                                    <Label   Content="摄像头" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Height="70" Style="{StaticResource MaterialDesignFlatBottomButton}"  >
+                                <StackPanel >
+                                    <materialDesign:PackIcon Kind="FileImage" Height="40" Width="40" HorizontalAlignment="Center" />
+                                    <Label   Content="多媒体" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                            <Button Height="35" Style="{StaticResource MaterialDesignFlatAccentButton}" Background="#FFD49335"  >
+                                <StackPanel Orientation="Horizontal"  >
+                                    <materialDesign:PackIcon Kind="Play" Height="24" Width="24" HorizontalAlignment="Center" Foreground="White" />
+                                    <Label Content="播放" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                                </StackPanel>
+                            </Button>
+                            <Label Content="00:00:00" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                        </StackPanel>
+
+                        
+                        <materialDesign:PopupBox  Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" 
+                                              PlacementMode="TopAndAlignCentres" StaysOpen="False" 
+                                              Margin="50,0,8,0"  Width="40" Height="40" BorderBrush="White" Background="White" >
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Kind="VolumeHigh" Width="24" Height="24" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <StackPanel>
+                                <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="0" Maximum="100" Width="24" Height="102" Foreground="White" />
+                                <Separator/>
+                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                    ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="20" Height="20"
+                                        Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <materialDesign:PackIcon Kind="BlockHelper" Height="16" Width="16" Foreground="#DDECECEC" />
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                        <materialDesign:PopupBox  Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"  
+                                              PlacementMode="TopAndAlignCentres" StaysOpen="False"  
+                                              Margin="0 0 8 0" Width="40" Height="40" Background="White" BorderBrush="White" >
+                            <materialDesign:PopupBox.ToggleContent>
+                                <materialDesign:PackIcon Kind="Microphone" Width="24" Height="24" />
+                            </materialDesign:PopupBox.ToggleContent>
+                            <StackPanel>
+                                <Slider TickFrequency="5" TickPlacement="BottomRight" Orientation="Vertical" Minimum="0" Maximum="100" Width="24" Height="102" Foreground="White"  />
+                                <Separator/>
+                                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                    ToolTip="MaterialDesignFloatingActionMiniAccentButton" Width="20" Height="20"
+                                        Background="{x:Null}" BorderBrush="{x:Null}">
+                                    <materialDesign:PackIcon Kind="BlockHelper" Height="16" Width="16" Foreground="#DDECECEC" />
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+
+                        
+                        
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <Grid Background="Black">
+                    <!--<ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />-->
                     <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar" />
                 </Grid>
             </DockPanel>
