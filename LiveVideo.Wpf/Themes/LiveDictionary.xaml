@@ -4,5 +4,6 @@
 
     <Style x:Key="MaterialDesignFlatBottomButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFlatButton}">
         <Setter Property="Foreground" Value="White"/>
+
     </Style>
 </ResourceDictionary>

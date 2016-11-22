@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using MaterialDesignColors.WpfExample.Domain;
 using MaterialDesignThemes.Wpf;
+using MaterialDesignDemo;
 
 namespace MaterialDesignColors.WpfExample
 {
@@ -53,6 +54,12 @@ namespace MaterialDesignColors.WpfExample
             };
 
             await DialogHost.Show(sampleMessageDialog, "RootDialog");            
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Settings s = new Settings();
+            s.ShowDialog();
         }
     } 
 }

@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:domain1="clr-namespace:MaterialDesignDemo.Domain"
         xmlns:materialDesignDemo="clr-namespace:MaterialDesignDemo"
-        Title="Material Design in XAML" Height="700" Width="1000"
+        Title="CR Player" Height="700" Width="1000"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -26,178 +26,19 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!-- data template used for the dialogs example, defines a View for a ViewModel of type DateTime  -->
-            <DataTemplate DataType="{x:Type system:DateTime}">
+            <!--<DataTemplate DataType="{x:Type system:DateTime}">
                 <StackPanel Margin="16">
                     <TextBlock>England win the World Cup:</TextBlock>
                     <TextBlock Margin="0 8 0 0" Text="{Binding }" />
                     <TextBlock Margin="0 8 0 0" >You will never see that again.</TextBlock>
                     <Button  Margin="0 8 0 0" IsDefault="True" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">AWESOME</Button>
                 </StackPanel>
-            </DataTemplate>
+            </DataTemplate>-->
         </ResourceDictionary>
     </Window.Resources>
 
     <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
-            <materialDesign:DrawerHost.LeftDrawerContent>
-                <DockPanel MinWidth="212">
-                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
-                                    DockPanel.Dock="Top"
-                                    HorizontalAlignment="Right" Margin="16"
-                                    IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
-                    <ListBox x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
-                                PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="domain:DemoItem">
-                                <TextBlock Text="{Binding Name}" Margin="32 0 32 0" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                        <domain:DemoItem Name="Home">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Home />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Palette">
-                            <domain:DemoItem.Content>
-                                <wpfExample:PaletteSelector>
-                                    <wpfExample:PaletteSelector.DataContext>
-                                        <wpfExample:PaletteSelectorViewModel />
-                                    </wpfExample:PaletteSelector.DataContext>
-                                </wpfExample:PaletteSelector>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Buttons &amp; Toggles">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Buttons />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Fields">
-                            <domain:DemoItem.Content>
-                                <wpfExample:TextFields />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Pickers">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Pickers>
-                                    <wpfExample:Pickers.DataContext>
-                                        <wpfExample:PickersViewModel />
-                                    </wpfExample:Pickers.DataContext>
-                                </wpfExample:Pickers>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Sliders">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Sliders />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Chips">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Chips />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Typography">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Typography />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Cards">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Cards />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Icon Pack">
-                            <domain:DemoItem.Content>
-                                <materialDesignDemo:IconPack>
-                                    <materialDesignDemo:IconPack.DataContext>
-                                        <materialDesignDemo:IconPackViewModel />
-                                    </materialDesignDemo:IconPack.DataContext>
-                                </materialDesignDemo:IconPack>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Colour Zones">
-                            <domain:DemoItem.Content>
-                                <wpfExample:ColorZones />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Lists">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Lists>
-                                    <wpfExample:Lists.DataContext>
-                                        <domain:ListsAndGridsViewModel />
-                                    </wpfExample:Lists.DataContext>
-                                </wpfExample:Lists>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Trees">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Trees>
-                                    <wpfExample:Trees.DataContext>
-                                        <domain:TreesViewModel/>
-                                    </wpfExample:Trees.DataContext>
-                                </wpfExample:Trees>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Grids">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Grids>
-                                    <wpfExample:Grids.DataContext>
-                                        <domain:ListsAndGridsViewModel />
-                                    </wpfExample:Grids.DataContext>
-                                </wpfExample:Grids>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Expander">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Expander />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Group Boxes">
-                            <domain:DemoItem.Content>
-                                <wpfExample:GroupBoxes />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Menus &amp; Tool Bars">
-                            <domain:DemoItem.Content>
-                                <wpfExample:MenusAndToolBars />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Progress Indicators">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Progress />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Dialogs">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Dialogs>
-                                    <wpfExample:Dialogs.DataContext>
-                                        <domain1:DialogsViewModel />
-                                    </wpfExample:Dialogs.DataContext>
-                                </wpfExample:Dialogs>
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Drawers">
-                            <domain:DemoItem.Content>
-                                <materialDesignDemo:Drawers />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Snackbar">
-                            <domain:DemoItem.Content>
-                                <materialDesignDemo:Snackbars />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Transitions">
-                            <domain:DemoItem.Content>
-                                <materialDesignDemo:Transitions />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                        <domain:DemoItem Name="Shadows">
-                            <domain:DemoItem.Content>
-                                <wpfExample:Shadows />
-                            </domain:DemoItem.Content>
-                        </domain:DemoItem>
-                    </ListBox>
-                </DockPanel>
-            </materialDesign:DrawerHost.LeftDrawerContent>
             <DockPanel>
                 <DockPanel DockPanel.Dock="Right" MinWidth="256" Background="Black">
 
@@ -205,31 +46,32 @@
                                             Mode="Dark" DockPanel.Dock="Top">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <materialDesign:PackIcon Kind="Calendar" VerticalAlignment="Center"  Foreground="#FFD49335" HorizontalAlignment="Center" Height="22" Width="22"></materialDesign:PackIcon>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFD49335">场景设定</TextBlock>
-                    </StackPanel></materialDesign:ColorZone>
-                    <TabControl x:Name="tabControl" Padding="0">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFD49335">场景设定</TextBlock>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                    <TabControl x:Name="tabControl" Padding="0" Foreground="#FFD49335" BorderThickness="0">
                         <TabItem  Width="128" Height="32" Padding="0">
                             <TabItem.Header>
-                                <DockPanel Background="Gray" Width="128" Height="32" >
-                                    
-                                    <TextBlock  Text="场景1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <DockPanel Background="#FF303030" Width="128" Height="32" >
+
+                                    <TextBlock  Foreground="#FFD49335" Text="场景1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </DockPanel>
                             </TabItem.Header>
-                            <Grid Background="Gray"/>
+                            <Grid Background="#FF303030"/>
                         </TabItem>
                         <TabItem  Width="128"  Height="32" Padding="0">
                             <TabItem.Header>
-                                <Grid Background="Gray"  Width="128" Height="32">
-                                    <TextBlock  Text="场景2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Grid  Background="#FF303030"  Width="128" Height="32">
+                                    <TextBlock  Foreground="#FFD49335" Text="场景2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Grid>
                             </TabItem.Header>
-                            <Grid Background="Gray"/>
+                            <Grid Background="#FF303030"/>
                         </TabItem>
                     </TabControl>
 
                 </DockPanel>
                 <materialDesign:ColorZone Padding="16" Height="70" materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                            Mode="Dark" DockPanel.Dock="Top">
+                                            Mode="Dark" DockPanel.Dock="Top" Foreground="#FFD49335">
                     <DockPanel>
                         <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
                                         x:Name="MenuToggleButton"/>
@@ -262,11 +104,12 @@
                                 直播
                             </Button>
                             <Button Style="{StaticResource MaterialDesignRaisedButton}" Margin="0 0 8 0" Width="100"
-                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Background="#FFD49335">
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Background="#FF303030" BorderBrush="#FFD49335" Foreground="#FFD49335">
                                 录制
                             </Button>
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 8 0" Width="100"
-                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Background="#FFD49335">
+                            <Button x:Name="btnSettings" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+                                    Margin="0 0 8 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" 
+                                    Background="#FF303030" BorderBrush="#FFD49335" Foreground="#FFD49335" Click="btnSettings_Click">
                                 设置
                             </Button>
                         </StackPanel>
@@ -307,7 +150,7 @@
                             <Label Content="00:00:00" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
                         </StackPanel>
 
-                        
+
                         <materialDesign:PopupBox  Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}" 
                                               PlacementMode="TopAndAlignCentres" StaysOpen="False" 
                                               Margin="50,0,8,0"  Width="40" Height="40" BorderBrush="White" Background="White" >
@@ -341,13 +184,14 @@
                             </StackPanel>
                         </materialDesign:PopupBox>
 
-                        
-                        
+
+
                     </DockPanel>
                 </materialDesign:ColorZone>
                 <Grid Background="Black">
                     <!--<ContentControl Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />-->
                     <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar" />
+
                 </Grid>
             </DockPanel>
         </materialDesign:DrawerHost>

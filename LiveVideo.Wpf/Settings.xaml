@@ -1,0 +1,69 @@
+﻿<Window x:Class="MaterialDesignDemo.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:domain="clr-namespace:MaterialDesignColors.WpfExample.Domain"
+         xmlns:crConfig="clr-namespace:MaterialDesignDemo.CRConfig"
+        xmlns:local="clr-namespace:MaterialDesignDemo"
+        mc:Ignorable="d"
+        Title="Settings" Height="400" Width="552" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  DockPanel.Dock="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
+
+            <Button Margin="8">取消</Button>
+            <Button Margin="8">确认</Button>
+
+        </StackPanel>
+        <ListBox Grid.Column="0" Grid.Row="0" x:Name="DemoItemsListBox" Margin="0 16 0 16" SelectedIndex="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="domain:DemoItem">
+                    <TextBlock Text="{Binding Name}" Margin="32 0 32 0" />
+                </DataTemplate>
+
+            </ListBox.ItemTemplate>
+            <domain:DemoItem Name="视频">
+                <domain:DemoItem.Content>
+                    <crConfig:ConfigVideo />
+                </domain:DemoItem.Content>
+            </domain:DemoItem>
+            <domain:DemoItem Name="直播">
+                <domain:DemoItem.Content>
+                    <crConfig:ConfigVideo />
+                </domain:DemoItem.Content>
+            </domain:DemoItem>
+            <domain:DemoItem Name="设备">
+                <domain:DemoItem.Content>
+                    <crConfig:ConfigVideo />
+                </domain:DemoItem.Content>
+            </domain:DemoItem>
+            <domain:DemoItem Name="其他">
+                <domain:DemoItem.Content>
+                    <crConfig:ConfigVideo />
+                </domain:DemoItem.Content>
+            </domain:DemoItem>
+            <domain:DemoItem Name="推流地址">
+                <domain:DemoItem.Content>
+                    <crConfig:ConfigVideo />
+                </domain:DemoItem.Content>
+            </domain:DemoItem>
+            <domain:DemoItem Name="其他">
+                <domain:DemoItem.Content>
+                    <crConfig:ConfigVideo />
+                </domain:DemoItem.Content>
+            </domain:DemoItem>
+
+        </ListBox>
+        <ContentControl  Grid.Column="1" Grid.Row="0"  Margin="16" Content="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.Content}" />
+
+    </Grid>
+</Window>
